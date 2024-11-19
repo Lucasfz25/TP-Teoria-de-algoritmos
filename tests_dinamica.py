@@ -5,12 +5,12 @@ import monedas_dinamicas as din
 class TestsMonedasDinamicas(unittest.TestCase):
     def test_5_elementos(self):
         monedas = [96, 594, 437, 674, 950]
-        ganancia = din.monedas_dinamicas(monedas)
+        _, ganancia, _ = din.monedas_dinamicas(monedas)
         self.assertEqual(ganancia, 1483)
 
     def test_20_elementos(self):
         monedas = [455, 852, 725, 410, 835, 239, 404, 462, 629, 587, 171, 604, 826, 838, 384, 336, 21, 125, 378, 217]
-        ganancia = din.monedas_dinamicas(monedas)
+        _, ganancia, _ = din.monedas_dinamicas(monedas)
         self.assertEqual(ganancia, 5234)
 
     def test_1000_elementos(self):
@@ -72,7 +72,7 @@ class TestsMonedasDinamicas(unittest.TestCase):
                    3350, 4203, 3787, 3898, 4734, 1310, 4816, 4579, 121, 1900, 2951, 1977, 2081, 2842, 4258, 2468, 897,
                    3183, 809, 3408, 557, 3127, 3829, 2444, 34, 660, 1520, 1559, 4386, 1005, 4482, 2281, 128, 4917, 2650,
                    4048, 3660, 2757, 2799, 3524, 1775, 4701, 4856, 4456, 1068, 4853, 2943, 4177]
-        ganancia = din.monedas_dinamicas(monedas)
+        _, ganancia, _ = din.monedas_dinamicas(monedas)
         self.assertEqual(ganancia, 1401590)
 
 
