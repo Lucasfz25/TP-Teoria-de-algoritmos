@@ -39,9 +39,9 @@ if __name__ == '__main__':  #Este bloque es para que no explote time_algorithm
     ax: plt.axes
     fig, ax = plt.subplots()
     errors = [np.abs(c[0]*n+c[1]-results[n]) for n in x]
-    ax.plot(x, errors)
+    ax.plot(x, errors, label="Error")
     ax.set_title('Error de ajuste')
-    ax.set_xlabel('Tamaño del array')
+    ax.set_xlabel('Cantidad de monedas')
     ax.set_ylabel('Error Absoluto (s)')
     plt.legend()
     plt.show()
