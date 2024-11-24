@@ -49,4 +49,4 @@ plt.legend()
 plt.show()
 
 #Ver como en este caso la ganancia de sophia es menor cuando el array está ordenado.
-#Al igual que en Greedy, solo puede pasar que Sophia a lo sumo empate (ej: [5, 5, 5, 5] o [5, 1, 5, 1])
+#Qué pasa si monedas = [1, 10, 5]?
