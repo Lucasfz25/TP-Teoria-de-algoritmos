@@ -1,5 +1,3 @@
-
-
 def reconstruccion(monedas, matriz):
     i, k = 0, len(monedas)
     instucciones = []
