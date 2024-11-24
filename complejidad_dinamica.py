@@ -29,7 +29,7 @@ if __name__ == '__main__':  #Este bloque es para que no explote time_algorithm
     fig, ax = plt.subplots()
     ax.plot(x, [results[i] for i in x], label="Medición")
     ax.plot(x, [c[0]*(n**2)+c[1] for n in x], 'r--', label="Ajuste")
-    ax.set_title('Tiempo de ejecución de greedy')
+    ax.set_title('Tiempo de ejecución de PD')
     ax.set_xlabel('Cantidad de monedas')
     ax.set_ylabel('Tiempo de ejecución [s]')
     plt.legend()
