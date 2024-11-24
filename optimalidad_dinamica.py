@@ -50,3 +50,5 @@ plt.show()
 
 #Ver como en este caso la ganancia de sophia es menor cuando el array está ordenado.
 #Qué pasa si monedas = [1, 10, 5]?
+#La ganancia de mateo va a ser 10, y al de sophia 6
+#   -> Sophia puede perder dependiendo de como se distribuyan las monedas.
