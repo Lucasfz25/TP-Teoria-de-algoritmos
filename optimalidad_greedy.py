@@ -40,7 +40,6 @@ res1, y1, mateo1 = monedas_greedy(get_random_array())
 random.seed(54321)
 res2, y2, mateo2 = monedas_greedy(get_random_array())
 
-#Ajuste por cuadrados mínimos
 ax: plt.axes
 fig, ax = plt.subplots()
 ax.plot(x, [sum(monedas_sophia_des[:i]) for i in x], label="Ganancia Desordenada 1", color="lime")
@@ -50,7 +49,7 @@ ax.plot(x, [sum(monedas_sophia_asc[:i]) for i in x], 'r--', label="Ganancia Asce
 #ax.plot(x, [sum(monedas_sophia_dec[:i]) for i in x], label="Ganancia Descendiente", color="pink")
 #El grafico de los arrays ascendente y descendente son iguales. Me quedo con uno solo
 
-ax.set_title('Ganancia de Sophia por Tamaño de Array')
+ax.set_title('Ganancia de Sophia por Cantidad de Monedas')
 ax.set_xlabel('Cantidad de monedas')
 ax.set_ylabel('Ganancia')
 plt.legend()

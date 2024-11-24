@@ -1,17 +1,21 @@
 def reconstruccion(monedas, matriz):
     i, k = 0, len(monedas)
     instucciones = []
+    monedas_sophia = []
     while k > 0:
         if matriz[k][i] == matriz[k - 2][i + 1] + monedas[i]:
             instucciones.append(f"Sophia debe agarrar la primera ({monedas[i]})")
+            monedas_sophia.append(monedas[i])
             i += 1
         elif (matriz[k][i] == matriz[k - 2][i + 2] + monedas[i]
               and (matriz[k][i] != matriz[k - 2][i] + monedas[k + i - 1]
                    or monedas[i + 1] <= (monedas[k + i - 1] and monedas[i]))):
             instucciones.append(f"Sophia debe agarrar la primera ({monedas[i]})")
+            monedas_sophia.append(monedas[i])
             i += 1
         else:
             instucciones.append(f"Sophia debe agarrar la ultima ({monedas[k + i - 1]})")
+            monedas_sophia.append(monedas[k+i-1])
         k -= 1
 
         if k > 0:
@@ -21,7 +25,7 @@ def reconstruccion(monedas, matriz):
                 instucciones.append(f"Mateo agarra la primera ({monedas[i]})")
                 i += 1
             k -= 1
-    return instucciones
+    return instucciones, monedas_sophia
 
 
 def elegir_izq(monedas, matriz, inicio):
@@ -66,7 +70,7 @@ def monedas_dinamicas(monedas):
     total_monedas = sum(monedas)
     total_sophia = matriz[len(monedas)][0]
     total_mateo = total_monedas - total_sophia
-    decisiones = reconstruccion(monedas, matriz)
+    decisiones, monedas_sophia = reconstruccion(monedas, matriz)
 
-    return decisiones, total_sophia, total_mateo
+    return decisiones, monedas_sophia, total_sophia, total_mateo
 
