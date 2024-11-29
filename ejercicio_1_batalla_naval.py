@@ -170,7 +170,7 @@ def posicion_de_desplazamiento_hay_posicion_de_otro_barco(tablero,n,m,offset_f,o
         return False
     return False
 
-
+###Este seria el tablero con las ubicaciones de los barcos que se muestra en imagen en el tp3
 tablero = [[None for _ in range(10)] for _ in range(10)]
 longitud_barcos =  [3,1,1,2,4,2,1,3,1,2]
 restricciones_filas = [3,2,2,4,2,1,1,2,3,0]
