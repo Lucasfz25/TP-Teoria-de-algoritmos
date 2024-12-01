@@ -28,7 +28,7 @@ if __name__ == '__main__':  #Este bloque es para que no explote time_algorithm
     r1 = time_algorithm(monedas_dinamicas, x, lambda s: [get_random_array(s)])
     np.random.seed(3)
     r2 = time_algorithm(monedas_dinamicas, x, lambda s: [get_random_array(s)])
-    np.random.seed(0)
+    np.random.seed(54321)
     r3 = time_algorithm(monedas_dinamicas, x, lambda s: [get_random_array(s)])
     
     ax: plt.axes
