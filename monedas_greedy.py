@@ -18,7 +18,7 @@ def elegir_mateo(monedas, decisiones):
         return 0
 
 
-def monedas_greedy(monedas):
+def monedas_dinamicas(monedas):
     monedas_sophia = []
     monedas_mateo = []
     decisiones = []
