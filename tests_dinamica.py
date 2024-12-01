@@ -7,16 +7,16 @@ class TestsMonedasDinamicas(unittest.TestCase):
         monedas = [5]
         des, _, ganancia, _ = din.monedas_dinamicas(monedas)
         self.assertEqual(ganancia, 5)
-        self.assertEqual(des, "Sophia debe agarrar la ultima (5)")
+        self.assertEqual(des, ["Sophia debe agarrar la ultima (5)"])
 
     def test_lista_ordenada(self):
         monedas = [72,165,794,892,880,341,882,570,679,725,979,375,459,603,112,436,587,699,681,83]
         m_asc = sorted(monedas)
         m_dec = sorted(monedas, reverse=True)
-        _, s_asc, m_asc = din.monedas_dinamicas(m_asc)
-        _, s_dec, m_dec = din.monedas_dinamicas(m_dec)
-        self.assertGreater(sum(s_asc), sum(m_asc))
-        self.assertGreater(sum(s_dec), sum(m_dec))
+        _, _, s_asc, m_asc = din.monedas_dinamicas(m_asc)
+        _, _, s_dec, m_dec = din.monedas_dinamicas(m_dec)
+        self.assertGreater(s_asc, m_asc)
+        self.assertGreater(s_dec, m_dec)
 
     def test_5_elementos(self):
         monedas = [96, 594, 437, 674, 950]
