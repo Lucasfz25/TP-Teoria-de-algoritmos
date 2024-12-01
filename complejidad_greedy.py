@@ -1,4 +1,4 @@
-from monedas_greedy import monedas_dinamicas
+from monedas_greedy import monedas_greedy
 
 from random import seed
 
@@ -20,7 +20,7 @@ if __name__ == '__main__':  #Este bloque es para que no explote time_algorithm
     sns.set_theme()
 
     x = np.linspace(1,100000,20).astype(int)
-    results = time_algorithm(monedas_dinamicas, x, lambda s: [get_random_array(s)])
+    results = time_algorithm(monedas_greedy, x, lambda s: [get_random_array(s)])
     f = lambda x, c1, c2: c1*x+c2 #forma de una función lineal
     c, pcov = sp.optimize.curve_fit(f, x, [results[n] for n in x])
 

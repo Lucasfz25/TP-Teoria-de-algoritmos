@@ -1,4 +1,4 @@
-from monedas_greedy import monedas_dinamicas
+from monedas_greedy import monedas_greedy
 import random
 import seaborn as sns
 import numpy as np
@@ -12,9 +12,9 @@ monedas = [34, 7, 25, 2, 49, 16, 45, 12, 37, 1, 28, 20, 6, 31, 39, 46, 48, 23, 9
 monedas_asc = sorted(monedas)
 monedas_dec = sorted(monedas, reverse=True)
 
-decisiones_des, monedas_sophia_des, monedas_mateo_des = monedas_dinamicas(monedas)
-decisiones_asc, monedas_sophia_asc, monedas_mateo_asc = monedas_dinamicas(monedas_asc)
-decisiones_dec, monedas_sophia_dec, monedas_mateo_dec = monedas_dinamicas(monedas_dec)
+decisiones_des, monedas_sophia_des, monedas_mateo_des = monedas_greedy(monedas)
+decisiones_asc, monedas_sophia_asc, monedas_mateo_asc = monedas_greedy(monedas_asc)
+decisiones_dec, monedas_sophia_dec, monedas_mateo_dec = monedas_greedy(monedas_dec)
 
 ganancia_des = sum(monedas_sophia_des)
 ganancia_asc = sum(monedas_sophia_asc)
@@ -35,10 +35,10 @@ sns.set_theme()
 x = np.linspace(1,25,25).astype(int)
 
 random.seed(12345)
-res1, y1, mateo1 = monedas_dinamicas(get_random_array())
+res1, y1, mateo1 = monedas_greedy(get_random_array())
 
 random.seed(54321)
-res2, y2, mateo2 = monedas_dinamicas(get_random_array())
+res2, y2, mateo2 = monedas_greedy(get_random_array())
 
 ax: plt.axes
 fig, ax = plt.subplots()

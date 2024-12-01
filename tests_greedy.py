@@ -4,7 +4,7 @@ import monedas_greedy as greedy
 class TestsMonedasGreedy(unittest.TestCase):
     def test_una_moneda(self):
         monedas = [5]
-        decisiones, s, _ = greedy.monedas_dinamicas(monedas)
+        decisiones, s, _ = greedy.monedas_greedy(monedas)
         self.assertEqual(sum(s), 5)
         self.assertEqual(decisiones, ["Última moneda para Sophia"])
 
@@ -12,30 +12,30 @@ class TestsMonedasGreedy(unittest.TestCase):
         monedas = [72,165,794,892,880,341,882,570,679,725,979,375,459,603,112,436,587,699,681,83]
         m_asc = sorted(monedas)
         m_dec = sorted(monedas, reverse=True)
-        _, s_asc, m_asc = greedy.monedas_dinamicas(m_asc)
-        _, s_dec, m_dec = greedy.monedas_dinamicas(m_dec)
+        _, s_asc, m_asc = greedy.monedas_greedy(m_asc)
+        _, s_dec, m_dec = greedy.monedas_greedy(m_dec)
         self.assertGreater(sum(s_asc), sum(m_asc))
         self.assertGreater(sum(s_dec), sum(m_dec))
 
     def test_valores_iguales_par(self):
         monedas = [5,5,5,5,5,5,5,5,5,5]
-        _, s, m = greedy.monedas_dinamicas(monedas)
+        _, s, m = greedy.monedas_greedy(monedas)
         self.assertEqual(sum(s), sum(m))
 
     def test_valores_alternados(self):
         monedas = [1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,10]
-        _, s, m = greedy.monedas_dinamicas(monedas)
+        _, s, m = greedy.monedas_greedy(monedas)
         self.assertGreater(sum(s), sum(m))
 
     def test_lista_simetrica(self):
         monedas = [5,4,3,2,1,2,3,4,5]
-        _, s, m = greedy.monedas_dinamicas(monedas)
+        _, s, m = greedy.monedas_greedy(monedas)
         self.assertGreater(sum(s), sum(m))
 
     def test_20_elementos(self):
         monedas = [72,165,794,892,880,341,882,570,679,725,979,375,459,603,112,436,587,699,681,83]
         decisiones_esperadas = ["Última moneda para Sophia", "Primera moneda para Mateo", "Última moneda para Sophia", "Primera moneda para Mateo", "Primera moneda para Sophia", "Última moneda para Mateo", "Primera moneda para Sophia", "Última moneda para Mateo", "Primera moneda para Sophia", "Primera moneda para Mateo", "Primera moneda para Sophia", "Última moneda para Mateo", "Primera moneda para Sophia", "Última moneda para Mateo", "Primera moneda para Sophia", "Última moneda para Mateo", "Primera moneda para Sophia", "Última moneda para Mateo", "Primera moneda para Sophia", "Última moneda para Mateo"]
-        decisiones, monedas_s, monedas_m = greedy.monedas_dinamicas(monedas)
+        decisiones, monedas_s, monedas_m = greedy.monedas_greedy(monedas)
         ganancia = sum(monedas_s)
         self.assertEqual(ganancia, 7165)
         self.assertEqual(decisiones, decisiones_esperadas)

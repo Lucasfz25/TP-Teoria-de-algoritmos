@@ -1,5 +1,5 @@
 
-from monedas_greedy import monedas_dinamicas
+from monedas_greedy import monedas_greedy
 
 from random import seed
 
@@ -22,18 +22,18 @@ if __name__ == '__main__':  #Este bloque es para que no explote time_algorithm
 
     seed(12345)
     np.random.seed(12345)
-    results = time_algorithm(monedas_dinamicas, x, lambda s: [get_random_array(s)])
-    r_ordenado = time_algorithm(monedas_dinamicas, x, lambda s: [sorted(get_random_array(s))])
+    results = time_algorithm(monedas_greedy, x, lambda s: [get_random_array(s)])
+    r_ordenado = time_algorithm(monedas_greedy, x, lambda s: [sorted(get_random_array(s))])
 
     seed(54321)
     np.random.seed(54321)
-    r1 = time_algorithm(monedas_dinamicas, x, lambda s: [get_random_array(s)])
+    r1 = time_algorithm(monedas_greedy, x, lambda s: [get_random_array(s)])
     seed(432535)
     np.random.seed(432535)
-    r2 = time_algorithm(monedas_dinamicas, x, lambda s: [get_random_array(s)])
+    r2 = time_algorithm(monedas_greedy, x, lambda s: [get_random_array(s)])
     seed(11214)
     np.random.seed(11214)
-    r3 = time_algorithm(monedas_dinamicas, x, lambda s: [get_random_array(s)])
+    r3 = time_algorithm(monedas_greedy, x, lambda s: [get_random_array(s)])
 
     ax: plt.axes
     fig, ax = plt.subplots()
