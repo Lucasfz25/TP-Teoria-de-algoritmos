@@ -18,6 +18,16 @@ class TestsMonedasDinamicas(unittest.TestCase):
         self.assertGreater(s_asc, m_asc)
         self.assertGreater(s_dec, m_dec)
 
+    def test_pierde_sophia(self):
+        monedas = [1,10,5]
+        _, _, s, m = din.monedas_dinamicas(monedas)
+        self.assertGreater(m,s)      
+
+    def test_lista_simetrica(self):
+        monedas = [6,5,4,3,2,1,2,3,4,5,6]
+        _, _, s, m = din.monedas_dinamicas(monedas)
+        self.assertGreater(s,m)      
+
     def test_5_elementos(self):
         monedas = [96, 594, 437, 674, 950]
         _, _, ganancia, _ = din.monedas_dinamicas(monedas)
