@@ -331,16 +331,13 @@ def modificar_tablero(datos, tablero, resultado_final, posiciones_barcos_origina
 def imprimir_tablero(datos, tablero, resultado_final, posiciones_barcos_originales):
     modificar_tablero(datos, tablero, resultado_final, posiciones_barcos_originales)
 
-    print(" ---> TABLERO <--- ")
-    for i in range(len(tablero)):
-        for j in range(len(tablero[0])):
-            print("  ", end="")
-            if type(tablero[i][j]) == int:
-                print(f"{tablero[i][j]}", end="   ")
-            else:
-                print("-", end="   ")
-        print()
+    ancho_maximo = 5
+    no_elemento = "-"
 
+    print(" ---> TABLERO <--- ")
+    for fila in tablero:
+        print(''.join([(f"{no_elemento:<{ancho_maximo}}" if elemento == False else f"{elemento:<{ancho_maximo}}") for elemento in fila]))
+    print()
 
 
 def es_solucion(datos, resultado_final, resultado_actual):
