@@ -1,7 +1,7 @@
 from collections import deque
 
 def elegir_sophia(monedas, decisiones):
-    if monedas[0] < monedas[-1] or len(monedas)==1:
+    if monedas[0] <= monedas[-1] or len(monedas)==1:
         decisiones.append("Última moneda para Sophia")
         return -1
     else:
@@ -10,7 +10,7 @@ def elegir_sophia(monedas, decisiones):
 
 
 def elegir_mateo(monedas, decisiones):
-    if monedas[0] > monedas[-1] or len(monedas)==1:
+    if monedas[0] >= monedas[-1] or len(monedas)==1:
         decisiones.append("Última moneda para Mateo")
         return -1
     else:
