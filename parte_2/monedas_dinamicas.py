@@ -1,9 +1,13 @@
 def reconstruccion(monedas, matriz):
-    i, k = 0, len(monedas)-1
+    i, k = 0, len(monedas)
     instrucciones = []
     monedas_sophia = []
-    if i == k:
+    #if i == k:
+    #    instrucciones.append(f"Sophia debe agarrar la ultima ({monedas[i]})")
+    if len(monedas) == 1:
         instrucciones.append(f"Sophia debe agarrar la ultima ({monedas[i]})")
+        monedas_sophia.append(monedas[i])
+        return instrucciones, monedas_sophia
     while k > 0:
         if matriz[k][i] == matriz[k - 2][i + 1] + monedas[i]:
             instrucciones.append(f"Sophia debe agarrar la primera ({monedas[i]})")
