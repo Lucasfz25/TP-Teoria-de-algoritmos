@@ -152,7 +152,7 @@ def tiene_adyacentes_libres_abajo(datos, tablero, x, y, tamano_barco):
             return False
     
     # ABAJO
-    if ( (x+tamano_barco < len(datos["filas"])) and (tablero[x+1][y]) ):
+    if ( (x+tamano_barco < len(datos["filas"])) and (tablero[x+tamano_barco][y]) ):
         return False
     
     # CORNER SUPERIOR IZQUIERDO
@@ -430,7 +430,7 @@ def cumplir_maxima_demanda(datos, tablero, resultado_final, resultado_actual, in
 
 if __name__ == "__main__":
     datos, barcos_sin_ordenar = obtener_datos(sys.argv[1])
-    #datos, barcos_sin_ordenar = obtener_datos("TP3/30_25_25.txt")
+    #datos, barcos_sin_ordenar = obtener_datos("parte_3/datos_parte_3/10_10_10.txt")
 
     tiempo_inicial = time.time()
 
