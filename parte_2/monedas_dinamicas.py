@@ -2,8 +2,6 @@ def reconstruccion(monedas, matriz):
     i, k = 0, len(monedas)
     instrucciones = []
     monedas_sophia = []
-    #if i == k:
-    #    instrucciones.append(f"Sophia debe agarrar la ultima ({monedas[i]})")
     if len(monedas) == 1:
         instrucciones.append(f"Sophia debe agarrar la ultima ({monedas[i]})")
         monedas_sophia.append(monedas[i])
