@@ -109,22 +109,3 @@ def solucion_naval_jj(tablero, barcos, restricciones_f, restricciones_c):
         demanda_cumplida += len(solucion[i]) * 2
     return solucion, demanda_cumplida, demanda_total
 
-
-def main():
-    restricciones_f = [3,3,0,1,1]
-    restricciones_c = [3,1,0,3,3]
-    #restricciones_f = [3, 1, 2]
-    #restricciones_c = [3, 2, 0]
-    arr = [None] * (len(restricciones_c))
-    tablero = []
-    for i in range(len(restricciones_f)):
-        tablero.append(arr.copy())
-    barcos = [1,2,2,2,2,1]
-    #barcos = [1,1]
-    solucion, dc, dt = solucion_naval_jj(tablero, barcos, restricciones_f, restricciones_c)
-    print(solucion)
-    print(dc)
-    print(dt)
-
-
-main()
