@@ -299,17 +299,47 @@ def crear_respuesta(resultado_final, barcos_sin_ordenar):
     for i in range(len(indices_barcos)):
         respuesta_barcos.append([indices_barcos[i], resultado_final["posiciones"][i]])
 
-    respuesta_barcos.sort(key=lambda x: x[0])
-
     return respuesta_barcos
 
-def imprimir_respuesta(datos, resultado_final, barcos_sin_ordenar):
-    respuesta_barcos = crear_respuesta(resultado_final, barcos_sin_ordenar)
+def imprimir_respuesta(datos, resultado_final, posiciones_barcos_originales):
     print("Posiciones:")
-    for barco in respuesta_barcos:
+    for barco in posiciones_barcos_originales:
         escribir_posiciones(barco[0], barco[1])
     print("Demanda cumplida:", resultado_final["cumplido"])
     print("Demanda total:", datos["demanda_total"])
+
+
+
+def modificar_tablero(datos, tablero, resultado_final, posiciones_barcos_originales):
+    for i in range(len(resultado_final["posiciones"])):
+        if resultado_final["posiciones"][i] == [0]:
+            continue
+
+        x = resultado_final["posiciones"][i][0]
+        y = resultado_final["posiciones"][i][1]
+
+        if len(resultado_final["posiciones"][i]) == 2:
+            tablero[x][y] = posiciones_barcos_originales[i][0]
+        else:
+            if y == resultado_final["posiciones"][i][3]:
+                for j in range(datos["barcos"][i]):
+                    tablero[x+j][y] = posiciones_barcos_originales[i][0]
+            else:
+                for j in range(datos["barcos"][i]):
+                    tablero[x][y+j] = posiciones_barcos_originales[i][0]
+
+def imprimir_tablero(datos, tablero, resultado_final, posiciones_barcos_originales):
+    modificar_tablero(datos, tablero, resultado_final, posiciones_barcos_originales)
+
+    print(" ---> TABLERO <--- ")
+    for i in range(len(tablero)):
+        for j in range(len(tablero[0])):
+            print("  ", end="")
+            if type(tablero[i][j]) == int:
+                print(f"{tablero[i][j]}", end="   ")
+            else:
+                print("-", end="   ")
+        print()
 
 
 
@@ -396,7 +426,8 @@ def cumplir_maxima_demanda(datos, tablero, resultado_final, resultado_actual, in
         return True
     resultado_actual["posiciones"].pop()
 
-    
+
+
 if __name__ == "__main__":
     datos, barcos_sin_ordenar = obtener_datos(sys.argv[1])
     #datos, barcos_sin_ordenar = obtener_datos("TP3/30_25_25.txt")
@@ -424,7 +455,10 @@ if __name__ == "__main__":
 
     cumplir_maxima_demanda(datos, tablero, resultado_final, resultado_actual, barcos_que_no_pueden_ponerse, posiciones_usadas)
 
-    imprimir_respuesta(datos, resultado_final, barcos_sin_ordenar)
+    posiciones_barcos_originales = crear_respuesta(resultado_final, barcos_sin_ordenar)
+    imprimir_tablero(datos, tablero, resultado_final, posiciones_barcos_originales)
+    posiciones_barcos_originales.sort(key=lambda x: x[0])
+    imprimir_respuesta(datos, resultado_final, posiciones_barcos_originales)
 
     tiempo_final = time.time()
     print("Tiempo que tardo en correr --> {}".format(tiempo_final - tiempo_inicial))
