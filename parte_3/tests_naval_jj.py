@@ -29,3 +29,5 @@ class TestSolucionJJ(unittest.TestCase):
         self.assertEqual(dc, 26)
         self.assertEqual(dt, 53)
 
+if __name__ == '__main__':
+    unittest.main()

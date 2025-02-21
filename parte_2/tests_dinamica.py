@@ -101,4 +101,5 @@ class TestsMonedasDinamicas(unittest.TestCase):
         self.assertEqual(ganancia, 1401590)
 
 
-
+if __name__ == '__main__':
+    unittest.main()
