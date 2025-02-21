@@ -19,11 +19,7 @@ def obtener_datos(archivo_pruebas):
 if __name__ == "__main__":
     lista_monedas = obtener_datos(sys.argv[1])
 
-    decisiones, monedas_sophia, monedas_mateo = monedas_greedy.monedas_greedy(lista_monedas)
+    total_sophia, total_mateo, todas_elecciones = monedas_greedy.monedas_greedy(lista_monedas)
 
-    for decision in decisiones:
-        print(decision, end="; ")
-
-    print()
-    print("Ganancia de Sophia:", sum(monedas_sophia))
+    monedas_greedy.imprimir_datos(total_sophia, todas_elecciones)
     

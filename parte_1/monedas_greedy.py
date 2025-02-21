@@ -33,6 +33,5 @@ def monedas_greedy(monedas):
             total_mateo += elecciones(monedas, todas_elecciones, turno_de_sophia)
 
         turno_de_sophia = not turno_de_sophia
-
-    print(imprimir_datos(total_sophia, todas_elecciones))
+        
     return total_sophia, total_mateo, todas_elecciones

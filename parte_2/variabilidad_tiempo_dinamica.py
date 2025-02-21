@@ -33,9 +33,9 @@ if __name__ == '__main__':  #Este bloque es para que no explote time_algorithm
     ax: plt.axes
     fig, ax = plt.subplots()
     
-    ax.plot(x, [r1[i] for i in x], label="Lista 1", color="lime")
-    ax.plot(x, [r2[i] for i in x], label="Lista 2", color="darkslateblue")
-    ax.plot(x, [r3[i] for i in x], label="Lista 3", color="dodgerblue")
+    ax.plot(x, [r1[i] for i in x], label="Lista Random 1", color="lime")
+    ax.plot(x, [r2[i] for i in x], label="Lista Random 2", color="darkslateblue")
+    ax.plot(x, [r3[i] for i in x], label="Lista Random 3", color="dodgerblue")
     ax.plot(x, [r_ordenado[i] for i in x], "r--", label="Lista Ordenada")
     
     ax.set_title('Tiempo de Ejecución para Distintos Valores')

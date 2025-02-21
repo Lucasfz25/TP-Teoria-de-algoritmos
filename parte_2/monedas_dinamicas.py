@@ -77,4 +77,3 @@ def monedas_dinamicas(monedas):
     decisiones, monedas_sophia = reconstruccion(monedas, matriz)
 
     return decisiones, monedas_sophia, total_sophia, total_mateo
-
