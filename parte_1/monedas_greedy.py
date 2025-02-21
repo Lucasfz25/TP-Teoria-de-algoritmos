@@ -1,38 +1,38 @@
 from collections import deque
 
-def elegir_sophia(monedas, decisiones):
-    if monedas[0] <= monedas[-1] or len(monedas)==1:
-        decisiones.append("Última moneda para Sophia")
-        return -1
+def elecciones(monedas, elecciones, turno_sophia):
+    if (len(monedas) == 0) or (turno_sophia and monedas[0] > monedas[-1]) or (not turno_sophia and monedas[0] < monedas[-1]):
+        elecciones.append(True)
+        return monedas.popleft()
     else:
-        decisiones.append("Primera moneda para Sophia")
-        return 0
-
-
-def elegir_mateo(monedas, decisiones):
-    if monedas[0] >= monedas[-1] or len(monedas)==1:
-        decisiones.append("Última moneda para Mateo")
-        return -1
-    else:
-        decisiones.append("Primera moneda para Mateo")
-        return 0
-
+        elecciones.append(False)
+        return monedas.pop()
+    
+def imprimir_datos(total_sophia, todas_elecciones):
+    jugadores = ["Sophia", "Mateo"]
+    for i in range(len(todas_elecciones)):
+        if todas_elecciones[i]:
+            print(f"Primera moneda para {jugadores[i%2]};", end=" ")
+        else:
+            print(f"Ultima moneda para {jugadores[i%2]};", end=" ")
+    print()
+    print(f"Ganancia de Sophia: {total_sophia}")
 
 def monedas_greedy(monedas):
-    monedas_sophia = []
-    monedas_mateo = []
-    decisiones = []
+    total_sophia = 0
+    total_mateo = 0
+    todas_elecciones = []
+    turno_de_sophia = True
+
     monedas = deque(monedas)
 
     while len(monedas) > 0:
-        #moneda_elegida = monedas.pop(elegir_sophia(monedas, decisiones))
-        i = elegir_sophia(monedas, decisiones)
-        moneda_elegida = monedas.pop() if i<0 else monedas.popleft()
-        monedas_sophia.append(moneda_elegida)
-        if len(monedas) > 0:
-            #moneda_elegida = monedas.pop(elegir_mateo(monedas, decisiones))
-            j = elegir_mateo(monedas, decisiones)
-            moneda_elegida = monedas.pop() if j<0 else monedas.popleft()
-            monedas_mateo.append(moneda_elegida)
+        if turno_de_sophia:
+            total_sophia += elecciones(monedas, todas_elecciones, turno_de_sophia)
+        else:
+            total_mateo += elecciones(monedas, todas_elecciones, turno_de_sophia)
 
-    return decisiones, monedas_sophia, monedas_mateo
+        turno_de_sophia = not turno_de_sophia
+
+    print(imprimir_datos(total_sophia, todas_elecciones))
+    return total_sophia, total_mateo, todas_elecciones
