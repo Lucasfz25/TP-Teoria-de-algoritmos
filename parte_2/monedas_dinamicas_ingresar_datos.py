@@ -19,12 +19,5 @@ def obtener_datos(archivo_pruebas):
 if __name__ == "__main__":
     lista_monedas = obtener_datos(sys.argv[1])
 
-    decisiones, monedas_sophia, total_sophia, total_mateo = monedas_dinamicas.monedas_dinamicas(lista_monedas)
-
-    for decision in decisiones:
-        print(decision, end="; ")
-
-    print()
-    print("Ganancia de Sophia:", total_sophia)
-    print("Ganancia de Mateo:", total_mateo)
-    
+    valor_acumulado_sophia, turnos, valor_acumulado_mateo = monedas_dinamicas.monedas_dinamicas(lista_monedas)
+    monedas_dinamicas.imprimir_resultado(valor_acumulado_sophia, turnos, valor_acumulado_mateo, lista_monedas)
